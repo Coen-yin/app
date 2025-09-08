@@ -1,4 +1,4 @@
-import React, {createContext, useContext, useState, useEffect} from 'react';
+import React, {createContext, useContext, useState, useEffect, useCallback} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useColorScheme} from 'react-native';
 
@@ -90,11 +90,7 @@ export const ThemeProvider = ({children}) => {
   const [currentTheme, setCurrentTheme] = useState('light');
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    loadTheme();
-  }, []);
-
-  const loadTheme = async () => {
+  const loadTheme = useCallback(async () => {
     try {
       const savedTheme = await AsyncStorage.getItem('talkie-theme');
       if (savedTheme && themes[savedTheme]) {
@@ -109,7 +105,11 @@ export const ThemeProvider = ({children}) => {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [systemColorScheme]);
+
+  useEffect(() => {
+    loadTheme();
+  }, [loadTheme]);
 
   const changeTheme = async (newTheme) => {
     try {

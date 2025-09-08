@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useCallback} from 'react';
 import {
   NavigationContainer,
   DefaultTheme,
@@ -69,11 +69,7 @@ function App() {
   const [currentTheme, setCurrentTheme] = useState('light');
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    loadThemeFromStorage();
-  }, []);
-
-  const loadThemeFromStorage = async () => {
+  const loadThemeFromStorage = useCallback(async () => {
     try {
       const savedTheme = await AsyncStorage.getItem('talkie-theme');
       if (savedTheme) {
@@ -87,7 +83,11 @@ function App() {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [systemColorScheme]);
+
+  useEffect(() => {
+    loadThemeFromStorage();
+  }, [loadThemeFromStorage]);
 
   const getNavigationTheme = () => {
     switch (currentTheme) {
