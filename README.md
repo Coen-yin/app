@@ -1,26 +1,32 @@
-# Talkie Gen AI - iOS React Native App
+# Talkie Gen AI - React Native App
 
-A React Native iOS app version of the Talkie Gen AI website, providing an intelligent AI assistant experience optimized for mobile devices.
+A powerful AI chat assistant built with React Native and Expo, ready to run in Expo Snack.
+
+## 🚀 Quick Start with Expo Snack
+
+1. Go to [https://snack.expo.dev/](https://snack.expo.dev/)
+2. Create a new snack
+3. Copy all files from this repository to the snack
+4. The app will automatically start running
+5. Test it in the web preview or scan the QR code with Expo Go on your phone
 
 ## Features
 
-- 🤖 **AI-Powered Conversations**: Chat with an advanced AI assistant
+- 🤖 **AI-Powered Conversations**: Chat with an advanced AI assistant using Groq API
 - 🧠 **Memory System**: AI remembers your preferences and conversation history
-- 🎨 **Multiple Themes**: Light, Dark, and Pro themes
+- 🎨 **Multiple Themes**: Light, Dark, and Pro themes with beautiful gradients
 - 👤 **User Authentication**: Sign up and sign in functionality
-- ⚙️ **Customizable Settings**: Adjust AI behavior and preferences
-- 📱 **Mobile-Optimized UI**: Native iOS interface with smooth animations
+- ⚙️ **Customizable Settings**: Adjust AI behavior, context length, and response style
+- 📱 **Mobile-Optimized UI**: Native mobile interface with smooth animations
 - 💎 **Pro Features**: Enhanced capabilities for Pro users
-- 🔧 **Admin Panel**: Administrative features for app management
+- 🔧 **Admin Panel**: Administrative features and analytics
 
-## Getting Started
+## Local Development
 
 ### Prerequisites
 
 - Node.js (v16 or higher)
-- React Native CLI
-- Xcode (for iOS development)
-- iOS Simulator or physical iOS device
+- Expo CLI: `npm install -g expo-cli`
 
 ### Installation
 
@@ -35,127 +41,123 @@ A React Native iOS app version of the Talkie Gen AI website, providing an intell
    npm install
    ```
 
-3. **Install iOS dependencies**
+3. **Start the development server**
    ```bash
-   cd ios && pod install && cd ..
+   npx expo start
    ```
 
-4. **Start Metro bundler**
-   ```bash
-   npm start
-   ```
-
-5. **Run on iOS**
-   ```bash
-   npm run ios
-   ```
+4. **Run the app**
+   - Scan QR code with Expo Go app on your phone
+   - Press `i` for iOS simulator
+   - Press `a` for Android emulator
 
 ## Project Structure
 
 ```
-src/
-├── components/          # Reusable UI components
-│   ├── Sidebar.js      # Navigation sidebar
-│   ├── MessageBubble.js # Chat message component
-│   ├── WelcomeScreen.js # Welcome/landing screen
-│   └── TypingIndicator.js # AI typing animation
-├── screens/            # Screen components
-│   ├── MainScreen.js   # Main chat interface
-│   ├── AuthScreen.js   # Login/signup screen
-│   ├── SettingsScreen.js # App settings
-│   ├── ProfileScreen.js # User profile (Pro)
-│   ├── AdminScreen.js  # Admin dashboard
-│   └── DocsScreen.js   # Documentation
-├── context/            # React Context providers
-│   ├── ThemeContext.js # Theme management
-│   ├── AuthContext.js  # Authentication state
-│   └── ChatContext.js  # Chat and AI functionality
-├── services/           # API and service functions
-├── utils/              # Utility functions
-└── styles/             # Global styles
+├── App.js                 # Main app component with navigation
+├── src/
+│   ├── components/        # Reusable UI components
+│   │   ├── MessageBubble.js
+│   │   ├── Sidebar.js
+│   │   ├── TypingIndicator.js
+│   │   └── WelcomeScreen.js
+│   ├── context/          # React context providers
+│   │   ├── AuthContext.js
+│   │   ├── ChatContext.js
+│   │   └── ThemeContext.js
+│   └── screens/          # App screens
+│       ├── MainScreen.js
+│       ├── AuthScreen.js
+│       ├── SettingsScreen.js
+│       ├── ProfileScreen.js
+│       ├── AdminScreen.js
+│       └── DocsScreen.js
+├── assets/               # App icons and images
+├── app.json             # Expo configuration
+└── package.json         # Dependencies and scripts
 ```
+
+## Key Components
+
+- **MainScreen**: The main chat interface with message history and input
+- **AuthScreen**: User login and registration
+- **SettingsScreen**: Conversation and app settings
+- **Sidebar**: Navigation and chat history
+- **WelcomeScreen**: Initial screen with example prompts
+
+## Technologies Used
+
+- **React Native**: Cross-platform mobile framework
+- **Expo**: Development and deployment platform  
+- **React Navigation**: Screen navigation
+- **AsyncStorage**: Local data persistence
+- **@expo/vector-icons**: Beautiful icons
+- **expo-linear-gradient**: Gradient backgrounds and buttons
 
 ## Key Features Explained
 
-### AI Integration
-- Uses Groq API for AI responses
-- Contextual conversation management
-- Memory system for personalized interactions
+## AI Integration
 
-### Authentication System
-- Local storage-based user management
-- Pre-configured admin account (coenyin9@gmail.com)
-- Pro user tier with enhanced features
+The app uses the Groq API for AI responses with contextual memory:
 
-### Theme System
-- Dynamic theme switching
-- Support for light, dark, and pro themes
-- Consistent styling across all components
-
-### Mobile Optimization
-- Touch-friendly interface
-- Gesture navigation
-- Keyboard handling
-- Safe area support
-
-## Configuration
-
-### API Configuration
-The app uses the Groq API for AI responses. The API key is configured in `src/context/ChatContext.js`:
-
-```javascript
-const GROQ_API_KEY = 'your-api-key-here';
-const API_URL = 'https://api.groq.com/openai/v1/chat/completions';
-```
+- **Contextual Conversations**: Maintains conversation context and memory
+- **User Memory**: Remembers preferences, topics, and personal information
+- **Multiple Response Styles**: Concise, balanced, detailed, or creative
+- **Pro Features**: Enhanced AI capabilities for Pro users
 
 ### Admin Account
 A default admin account is automatically created:
 - **Email**: coenyin9@gmail.com
 - **Password**: Carronshore93
 
-## Building for Production
+## Building for Distribution
 
-### iOS App Store Build
+### Expo EAS Build
 
-1. **Archive the app**
+1. **Install EAS CLI**
    ```bash
-   npx react-native run-ios --configuration Release
+   npm install -g @expo/eas-cli
    ```
 
-2. **Open in Xcode**
-   - Open `ios/TalkieGenAI.xcworkspace` in Xcode
-   - Select your team and provisioning profile
-   - Archive and upload to App Store Connect
+2. **Configure EAS**
+   ```bash
+   eas build:configure
+   ```
+
+3. **Build for iOS/Android**
+   ```bash
+   eas build --platform ios
+   eas build --platform android
+   ```
+
+### Manual Export
+
+```bash
+npx expo export
+```
 
 ## Data Storage
 
 The app uses AsyncStorage for local data persistence:
 - User authentication data
-- Chat history and conversations
+- Chat history and conversations  
 - User preferences and settings
 - AI memory and context
 
 ## Dependencies
 
-Key dependencies include:
+Key Expo-compatible dependencies:
+- `expo` - Expo platform
 - `@react-navigation/native` - Navigation
 - `@react-native-async-storage/async-storage` - Local storage
-- `react-native-linear-gradient` - Gradient components
-- `react-native-vector-icons` - Icon library
-- `react-native-toast-message` - Toast notifications
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Test thoroughly
-5. Submit a pull request
+- `expo-linear-gradient` - Gradient components
+- `@expo/vector-icons` - Icon library
+- `expo-clipboard` - Clipboard functionality
 
 ## License
 
-This project is private and proprietary.
+This project is open source. Feel free to use and modify as needed.
 
 ## Support
 
-For support and questions, contact the development team or check the in-app documentation.
+For support and questions, check the in-app documentation or create an issue.
