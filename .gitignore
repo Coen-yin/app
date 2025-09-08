@@ -67,3 +67,6 @@ test.bundle.*
 
 # Testing
 /coverage
+# Expo
+.expo/
+dist/
