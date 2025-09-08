@@ -1,6 +1,6 @@
 import React, {createContext, useContext, useState, useEffect} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import Toast from 'react-native-toast-message';
+import {Alert} from 'react-native';
 
 const AuthContext = createContext();
 
@@ -87,21 +87,13 @@ export const AuthProvider = ({children}) => {
       const user = users[email];
 
       if (!user) {
-        Toast.show({
-          type: 'error',
-          text1: 'Login Failed',
-          text2: 'No account found with this email.',
-        });
+        Alert.alert('Login Failed', 'No account found with this email.');
         return false;
       }
 
       const hashedPassword = hashPassword(password);
       if (user.password !== hashedPassword) {
-        Toast.show({
-          type: 'error',
-          text1: 'Login Failed',
-          text2: 'Incorrect password.',
-        });
+        Alert.alert('Login Failed', 'Incorrect password.');
         return false;
       }
 
@@ -117,20 +109,20 @@ export const AuthProvider = ({children}) => {
       setCurrentUser(userData);
       await AsyncStorage.setItem('talkie-user', JSON.stringify(userData));
 
-      Toast.show({
-        type: 'success',
-        text1: 'Welcome back!',
+      Alert.alert(
+        
+        "Welcome back!",TITLE"Welcome back!",
         text2: `Good to see you, ${user.name}`,
-      });
+      );
 
       return true;
     } catch (error) {
       console.error('Login error:', error);
-      Toast.show({
-        type: 'error',
-        text1: 'Login Error',
-        text2: 'An error occurred during login.',
-      });
+      Alert.alert(
+        
+        "Login Error",TITLE"Login Error",
+        "An error occurred during login.",MESSAGE"An error occurred during login.",
+      );
       return false;
     }
   };
@@ -139,20 +131,20 @@ export const AuthProvider = ({children}) => {
     try {
       // Validation
       if (!name || !email || !password) {
-        Toast.show({
-          type: 'error',
-          text1: 'Signup Failed',
-          text2: 'Please fill in all fields.',
-        });
+        Alert.alert(
+          
+          "Signup Failed",TITLE"Signup Failed",
+          "Please fill in all fields.",MESSAGE"Please fill in all fields.",
+        );
         return false;
       }
 
       if (password.length < 6) {
-        Toast.show({
-          type: 'error',
-          text1: 'Signup Failed',
-          text2: 'Password must be at least 6 characters.',
-        });
+        Alert.alert(
+          
+          "Signup Failed",TITLE"Signup Failed",
+          "Password must be at least 6 characters.",MESSAGE"Password must be at least 6 characters.",
+        );
         return false;
       }
 
@@ -161,11 +153,11 @@ export const AuthProvider = ({children}) => {
       const users = usersData ? JSON.parse(usersData) : {};
 
       if (users[email]) {
-        Toast.show({
-          type: 'error',
-          text1: 'Signup Failed',
-          text2: 'An account with this email already exists.',
-        });
+        Alert.alert(
+          
+          "Signup Failed",TITLE"Signup Failed",
+          "An account with this email already exists.",MESSAGE"An account with this email already exists.",
+        );
         return false;
       }
 
@@ -197,20 +189,20 @@ export const AuthProvider = ({children}) => {
       setCurrentUser(userData);
       await AsyncStorage.setItem('talkie-user', JSON.stringify(userData));
 
-      Toast.show({
-        type: 'success',
-        text1: 'Welcome to Talkie Gen AI!',
+      Alert.alert(
+        
+        "Welcome to Talkie Gen AI!",TITLE"Welcome to Talkie Gen AI!",
         text2: `Account created successfully, ${name}`,
-      });
+      );
 
       return true;
     } catch (error) {
       console.error('Signup error:', error);
-      Toast.show({
-        type: 'error',
-        text1: 'Signup Error',
-        text2: 'An error occurred during signup.',
-      });
+      Alert.alert(
+        
+        "Signup Error",TITLE"Signup Error",
+        "An error occurred during signup.",MESSAGE"An error occurred during signup.",
+      );
       return false;
     }
   };
@@ -219,11 +211,11 @@ export const AuthProvider = ({children}) => {
     try {
       setCurrentUser(null);
       await AsyncStorage.removeItem('talkie-user');
-      Toast.show({
-        type: 'success',
-        text1: 'Signed Out',
-        text2: 'You have been signed out successfully.',
-      });
+      Alert.alert(
+        
+        "Signed Out",TITLE"Signed Out",
+        "You have been signed out successfully.",MESSAGE"You have been signed out successfully.",
+      );
     } catch (error) {
       console.error('Logout error:', error);
     }
@@ -246,20 +238,20 @@ export const AuthProvider = ({children}) => {
         await AsyncStorage.setItem('talkie-users', JSON.stringify(users));
       }
 
-      Toast.show({
-        type: 'success',
-        text1: 'Profile Updated',
-        text2: 'Your profile has been updated successfully.',
-      });
+      Alert.alert(
+        
+        "Profile Updated",TITLE"Profile Updated",
+        "Your profile has been updated successfully.",MESSAGE"Your profile has been updated successfully.",
+      );
 
       return true;
     } catch (error) {
       console.error('Profile update error:', error);
-      Toast.show({
-        type: 'error',
-        text1: 'Update Failed',
-        text2: 'Failed to update profile.',
-      });
+      Alert.alert(
+        
+        "Update Failed",TITLE"Update Failed",
+        "Failed to update profile.",MESSAGE"Failed to update profile.",
+      );
       return false;
     }
   };
@@ -275,11 +267,11 @@ export const AuthProvider = ({children}) => {
 
       await updateProfile(updates);
 
-      Toast.show({
-        type: 'success',
-        text1: '🎉 Welcome to Talkie Gen Pro!',
-        text2: 'You now have access to exclusive features.',
-      });
+      Alert.alert(
+        
+        "🎉 Welcome to Talkie Gen Pro!",TITLE"🎉 Welcome to Talkie Gen Pro!",
+        "You now have access to exclusive features.",MESSAGE"You now have access to exclusive features.",
+      );
 
       return true;
     } catch (error) {

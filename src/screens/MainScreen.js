@@ -12,10 +12,9 @@ import {
   Animated,
   Dimensions,
 } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
-import Icon from 'react-native-vector-icons/Feather';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import Toast from 'react-native-toast-message';
+import {LinearGradient} from 'expo-linear-gradient';
+import {Feather} from '@expo/vector-icons';
+import {MaterialIcons} from '@expo/vector-icons';
 
 import {useTheme} from '../context/ThemeContext';
 import {useAuth} from '../context/AuthContext';
@@ -136,7 +135,7 @@ const MainScreen = ({navigation}) => {
         style={styles.headerButton}
         onPress={toggleSidebar}
         hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}>
-        <Icon name="menu" size={24} color={theme.textSecondary} />
+        <Feather name="menu" size={24} color={theme.textSecondary} />
       </TouchableOpacity>
       
       <View style={styles.headerTitle}>
@@ -156,14 +155,14 @@ const MainScreen = ({navigation}) => {
           style={styles.headerButton}
           onPress={() => navigation.navigate('Docs')}
           hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}>
-          <Icon name="book" size={20} color={theme.textSecondary} />
+          <Feather name="book" size={20} color={theme.textSecondary} />
         </TouchableOpacity>
         
         <TouchableOpacity
           style={styles.headerButton}
           onPress={() => navigation.navigate('Settings')}
           hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}>
-          <Icon name="settings" size={20} color={theme.textSecondary} />
+          <Feather name="settings" size={20} color={theme.textSecondary} />
         </TouchableOpacity>
       </View>
     </View>
@@ -198,13 +197,13 @@ const MainScreen = ({navigation}) => {
             <TouchableOpacity
               style={styles.actionButton}
               hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}>
-              <Icon name="paperclip" size={20} color={theme.textTertiary} />
+              <Feather name="paperclip" size={20} color={theme.textTertiary} />
             </TouchableOpacity>
             
             <TouchableOpacity
               style={styles.actionButton}
               hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}>
-              <Icon name="mic" size={20} color={theme.textTertiary} />
+              <Feather name="mic" size={20} color={theme.textTertiary} />
             </TouchableOpacity>
             
             <TouchableOpacity

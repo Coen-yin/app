@@ -7,9 +7,8 @@ import {
   FlatList,
   Alert,
 } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
-import Icon from 'react-native-vector-icons/Feather';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import {LinearGradient} from 'expo-linear-gradient';
+import {Feather, MaterialIcons} from '@expo/vector-icons';
 
 import {useTheme} from '../context/ThemeContext';
 import {useAuth} from '../context/AuthContext';
@@ -126,7 +125,7 @@ const Sidebar = ({visible, onClose, onNewChat, navigation}) => {
           style={styles.deleteButton}
           onPress={() => handleDeleteChat(item.id, item.title)}
           hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}>
-          <Icon name="trash-2" size={14} color={theme.textTertiary} />
+          <Feather name="trash-2" size={14} color={theme.textTertiary} />
         </TouchableOpacity>
       </TouchableOpacity>
     );
@@ -139,14 +138,14 @@ const Sidebar = ({visible, onClose, onNewChat, navigation}) => {
           <TouchableOpacity
             style={styles.dropdownItem}
             onPress={() => handleAuthAction('login')}>
-            <Icon name="log-in" size={16} color={theme.textPrimary} />
+            <Feather name="log-in" size={16} color={theme.textPrimary} />
             <Text style={[styles.dropdownText, {color: theme.textPrimary}]}>Sign In</Text>
           </TouchableOpacity>
           
           <TouchableOpacity
             style={styles.dropdownItem}
             onPress={() => handleAuthAction('signup')}>
-            <Icon name="user-plus" size={16} color={theme.textPrimary} />
+            <Feather name="user-plus" size={16} color={theme.textPrimary} />
             <Text style={[styles.dropdownText, {color: theme.textPrimary}]}>Sign Up</Text>
           </TouchableOpacity>
         </>
@@ -156,7 +155,7 @@ const Sidebar = ({visible, onClose, onNewChat, navigation}) => {
             <TouchableOpacity
               style={styles.dropdownItem}
               onPress={() => handleAuthAction('profile')}>
-              <Icon name="user" size={16} color={theme.textPrimary} />
+              <Feather name="user" size={16} color={theme.textPrimary} />
               <Text style={[styles.dropdownText, {color: theme.textPrimary}]}>Profile</Text>
             </TouchableOpacity>
           )}
@@ -165,7 +164,7 @@ const Sidebar = ({visible, onClose, onNewChat, navigation}) => {
             <TouchableOpacity
               style={styles.dropdownItem}
               onPress={() => handleAuthAction('admin')}>
-              <Icon name="shield" size={16} color={theme.textPrimary} />
+              <Feather name="shield" size={16} color={theme.textPrimary} />
               <Text style={[styles.dropdownText, {color: theme.textPrimary}]}>Admin Panel</Text>
             </TouchableOpacity>
           )}
@@ -173,7 +172,7 @@ const Sidebar = ({visible, onClose, onNewChat, navigation}) => {
           <TouchableOpacity
             style={styles.dropdownItem}
             onPress={() => handleAuthAction('logout')}>
-            <Icon name="log-out" size={16} color={theme.textPrimary} />
+            <Feather name="log-out" size={16} color={theme.textPrimary} />
             <Text style={[styles.dropdownText, {color: theme.textPrimary}]}>Sign Out</Text>
           </TouchableOpacity>
         </>
@@ -185,21 +184,21 @@ const Sidebar = ({visible, onClose, onNewChat, navigation}) => {
           toggleTheme(currentUser?.isPro);
           setShowUserMenu(false);
         }}>
-        <Icon name={getThemeIcon()} size={16} color={theme.textPrimary} />
+        <Feather name={getThemeIcon()} size={16} color={theme.textPrimary} />
         <Text style={[styles.dropdownText, {color: theme.textPrimary}]}>{getThemeLabel()}</Text>
       </TouchableOpacity>
       
       <TouchableOpacity
         style={styles.dropdownItem}
         onPress={() => handleAuthAction('settings')}>
-        <Icon name="settings" size={16} color={theme.textPrimary} />
+        <Feather name="settings" size={16} color={theme.textPrimary} />
         <Text style={[styles.dropdownText, {color: theme.textPrimary}]}>Settings</Text>
       </TouchableOpacity>
       
       <TouchableOpacity
         style={styles.dropdownItem}
         onPress={handleClearAllChats}>
-        <Icon name="trash" size={16} color={theme.danger} />
+        <Feather name="trash" size={16} color={theme.danger} />
         <Text style={[styles.dropdownText, {color: theme.danger}]}>Clear all</Text>
       </TouchableOpacity>
     </View>
@@ -228,7 +227,7 @@ const Sidebar = ({visible, onClose, onNewChat, navigation}) => {
         <TouchableOpacity
           style={styles.newChatButton}
           onPress={onNewChat}>
-          <Icon name="plus" size={16} color="white" />
+          <Feather name="plus" size={16} color="white" />
           <Text style={styles.newChatText}>New Chat</Text>
         </TouchableOpacity>
       </LinearGradient>
@@ -283,7 +282,7 @@ const Sidebar = ({visible, onClose, onNewChat, navigation}) => {
             </Text>
           </View>
           
-          <Icon 
+          <Feather 
             name={showUserMenu ? "chevron-down" : "chevron-up"} 
             size={16} 
             color={theme.textSecondary} 

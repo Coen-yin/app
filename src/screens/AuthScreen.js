@@ -10,8 +10,8 @@ import {
   Platform,
   ScrollView,
 } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
-import Icon from 'react-native-vector-icons/Feather';
+import {LinearGradient} from 'expo-linear-gradient';
+import {Feather} from '@expo/vector-icons';
 
 import {useTheme} from '../context/ThemeContext';
 import {useAuth} from '../context/AuthContext';
@@ -97,7 +97,7 @@ const AuthScreen = ({navigation, route}) => {
           style={styles.closeButton}
           onPress={() => navigation.goBack()}
           hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}>
-          <Icon name="x" size={24} color={theme.textSecondary} />
+          <Feather name="x" size={24} color={theme.textSecondary} />
         </TouchableOpacity>
         
         <Text style={[styles.headerTitle, {color: theme.textPrimary}]}>
@@ -208,7 +208,7 @@ const AuthScreen = ({navigation, route}) => {
                   style={styles.eyeButton}
                   onPress={() => setShowPassword(!showPassword)}
                   hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}>
-                  <Icon 
+                  <Feather 
                     name={showPassword ? 'eye-off' : 'eye'} 
                     size={20} 
                     color={theme.textTertiary} 
@@ -243,7 +243,7 @@ const AuthScreen = ({navigation, route}) => {
                     style={styles.eyeButton}
                     onPress={() => setShowConfirmPassword(!showConfirmPassword)}
                     hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}>
-                    <Icon 
+                    <Feather 
                       name={showConfirmPassword ? 'eye-off' : 'eye'} 
                       size={20} 
                       color={theme.textTertiary} 

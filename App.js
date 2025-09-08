@@ -6,8 +6,8 @@ import {
 } from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {StatusBar, useColorScheme} from 'react-native';
-import Toast from 'react-native-toast-message';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {StatusBar as ExpoStatusBar} from 'expo-status-bar';
 
 // Import screens
 import MainScreen from './src/screens/MainScreen';
@@ -109,10 +109,8 @@ function App() {
       <AuthProvider>
         <ChatProvider>
           <NavigationContainer theme={getNavigationTheme()}>
-            <StatusBar
-              barStyle={
-                currentTheme === 'light' ? 'dark-content' : 'light-content'
-              }
+            <ExpoStatusBar
+              style={currentTheme === 'light' ? 'dark' : 'light'}
               backgroundColor={getNavigationTheme().colors.background}
             />
             <Stack.Navigator
@@ -181,7 +179,6 @@ function App() {
                 }}
               />
             </Stack.Navigator>
-            <Toast />
           </NavigationContainer>
         </ChatProvider>
       </AuthProvider>

@@ -1,6 +1,6 @@
 import React, {createContext, useContext, useState, useEffect} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import Toast from 'react-native-toast-message';
+import {Alert} from 'react-native';
 import {useAuth} from './AuthContext';
 
 const ChatContext = createContext();
@@ -139,20 +139,12 @@ export const ChatProvider = ({children}) => {
       setChats(updatedChats);
       await saveChats(updatedChats);
 
-      Toast.show({
-        type: 'success',
-        text1: 'Chat Deleted',
-        text2: 'Conversation deleted successfully.',
-      });
+      Alert.alert('Success', 'Chat deleted successfully.');
 
       return true;
     } catch (error) {
       console.log('Error deleting chat:', error);
-      Toast.show({
-        type: 'error',
-        text1: 'Delete Failed',
-        text2: 'Failed to delete conversation.',
-      });
+      Alert.alert('Error', 'Failed to delete conversation.');
       return false;
     }
   };
@@ -163,11 +155,7 @@ export const ChatProvider = ({children}) => {
       setCurrentChatId(null);
       await AsyncStorage.setItem('talkie-chats', '{}');
 
-      Toast.show({
-        type: 'success',
-        text1: 'All Chats Cleared',
-        text2: 'All conversations have been deleted.',
-      });
+      Alert.alert('Success', 'All conversations have been deleted.');
 
       return true;
     } catch (error) {
@@ -497,11 +485,7 @@ CURRENT CONTEXT:
         await saveUserMemory(updatedMemory);
       }
 
-      Toast.show({
-        type: 'success',
-        text1: 'Memory Cleared',
-        text2: 'All memory data has been cleared.',
-      });
+      Alert.alert('Success', 'All memory data has been cleared.');
 
       return true;
     } catch (error) {

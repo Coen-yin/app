@@ -7,7 +7,7 @@ import {
   ScrollView,
   TouchableOpacity,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/Feather';
+import {Feather} from '@expo/vector-icons';
 
 import {useTheme} from '../context/ThemeContext';
 import {useChat} from '../context/ChatContext';
@@ -76,7 +76,7 @@ const SettingsScreen = ({navigation}) => {
           {typeof item.value === 'boolean' ? (item.value ? 'Enabled' : 'Disabled') : item.value}
         </Text>
       </View>
-      <Icon name="chevron-right" size={16} color={theme.textTertiary} />
+      <Feather name="chevron-right" size={16} color={theme.textTertiary} />
     </TouchableOpacity>
   );
 
@@ -109,7 +109,7 @@ const SettingsScreen = ({navigation}) => {
             <TouchableOpacity
               style={[styles.actionButton, {backgroundColor: theme.danger}]}
               onPress={clearUserMemory}>
-              <Icon name="trash-2" size={16} color="white" />
+              <Feather name="trash-2" size={16} color="white" />
               <Text style={styles.actionButtonText}>Clear Memory</Text>
             </TouchableOpacity>
           </View>
