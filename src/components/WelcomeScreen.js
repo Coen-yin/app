@@ -6,9 +6,8 @@ import {
   TouchableOpacity,
   ScrollView,
 } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
-import Icon from 'react-native-vector-icons/Feather';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import {LinearGradient} from 'expo-linear-gradient';
+import {Feather, MaterialIcons} from '@expo/vector-icons';
 
 import {useTheme} from '../context/ThemeContext';
 
@@ -54,7 +53,7 @@ const WelcomeScreen = ({onSendPrompt}) => {
     if (library === 'MaterialIcons') {
       return <MaterialIcons name={iconName} size={24} color="white" />;
     }
-    return <Icon name={iconName} size={24} color="white" />;
+    return <Feather name={iconName} size={24} color="white" />;
   };
 
   const renderPromptCard = (item) => (
@@ -78,7 +77,7 @@ const WelcomeScreen = ({onSendPrompt}) => {
         </Text>
       </View>
       
-      <Icon name="arrow-right" size={16} color={theme.textTertiary} />
+      <Feather name="arrow-right" size={16} color={theme.textTertiary} />
     </TouchableOpacity>
   );
 

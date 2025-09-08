@@ -7,8 +7,8 @@ import {
   ScrollView,
   TouchableOpacity,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/Feather';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import {Feather} from '@expo/vector-icons';
+import {MaterialIcons} from '@expo/vector-icons';
 
 import {useTheme} from '../context/ThemeContext';
 
@@ -219,7 +219,7 @@ const DocsScreen = ({navigation}) => {
         },
       ]}
       onPress={() => setActiveSection(section.id)}>
-      <Icon 
+      <Feather 
         name={section.icon} 
         size={16} 
         color={activeSection === section.id ? 'white' : theme.textSecondary} 

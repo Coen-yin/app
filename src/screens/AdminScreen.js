@@ -6,7 +6,7 @@ import {
   SafeAreaView,
   ScrollView,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/Feather';
+import {Feather} from '@expo/vector-icons';
 
 import {useTheme} from '../context/ThemeContext';
 import {useAuth} from '../context/AuthContext';
@@ -19,7 +19,7 @@ const AdminScreen = ({navigation}) => {
     return (
       <SafeAreaView style={[styles.container, {backgroundColor: theme.bgSecondary}]}>
         <View style={styles.centered}>
-          <Icon name="shield-off" size={48} color={theme.textTertiary} />
+          <Feather name="shield-off" size={48} color={theme.textTertiary} />
           <Text style={[styles.title, {color: theme.textPrimary}]}>
             Access Denied
           </Text>
@@ -63,7 +63,7 @@ const AdminScreen = ({navigation}) => {
       key={stat.label}
       style={[styles.statCard, {backgroundColor: theme.bgPrimary, borderColor: theme.borderLight}]}>
       <View style={[styles.statIcon, {backgroundColor: `${stat.color}20`}]}>
-        <Icon name={stat.icon} size={20} color={stat.color} />
+        <Feather name={stat.icon} size={20} color={stat.color} />
       </View>
       <View style={styles.statInfo}>
         <Text style={[styles.statValue, {color: theme.textPrimary}]}>
@@ -97,7 +97,7 @@ const AdminScreen = ({navigation}) => {
 
         <View style={[styles.activityCard, {backgroundColor: theme.bgPrimary, borderColor: theme.borderLight}]}>
           <View style={styles.activityHeader}>
-            <Icon name="activity" size={20} color={theme.textSecondary} />
+            <Feather name="activity" size={20} color={theme.textSecondary} />
             <Text style={[styles.activityTitle, {color: theme.textPrimary}]}>
               No recent activity
             </Text>

@@ -6,10 +6,9 @@ import {
   TouchableOpacity,
   Alert,
 } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
-import Icon from 'react-native-vector-icons/Feather';
-import Clipboard from '@react-native-clipboard/clipboard';
-import Toast from 'react-native-toast-message';
+import {LinearGradient} from 'expo-linear-gradient';
+import {Feather} from '@expo/vector-icons';
+import * as Clipboard from 'expo-clipboard';
 
 import {useTheme} from '../context/ThemeContext';
 
@@ -17,13 +16,9 @@ const MessageBubble = ({message, isUser, showAvatar, currentUser}) => {
   const {theme} = useTheme();
   const [showActions, setShowActions] = useState(false);
 
-  const handleCopyMessage = () => {
-    Clipboard.setString(message.content);
-    Toast.show({
-      type: 'success',
-      text1: 'Copied!',
-      text2: 'Message copied to clipboard',
-    });
+  const handleCopyMessage = async () => {
+    await Clipboard.setStringAsync(message.content);
+    Alert.alert('Copied!', 'Message copied to clipboard');
     setShowActions(false);
   };
 
@@ -65,7 +60,7 @@ const MessageBubble = ({message, isUser, showAvatar, currentUser}) => {
         <TouchableOpacity
           style={styles.actionButton}
           onPress={handleCopyMessage}>
-          <Icon name="copy" size={14} color={theme.textSecondary} />
+          <Feather name="copy" size={14} color={theme.textSecondary} />
           <Text style={[styles.actionText, {color: theme.textSecondary}]}>Copy</Text>
         </TouchableOpacity>
         
@@ -76,7 +71,7 @@ const MessageBubble = ({message, isUser, showAvatar, currentUser}) => {
               // TODO: Implement regenerate functionality
               setShowActions(false);
             }}>
-            <Icon name="refresh-cw" size={14} color={theme.textSecondary} />
+            <Feather name="refresh-cw" size={14} color={theme.textSecondary} />
             <Text style={[styles.actionText, {color: theme.textSecondary}]}>Regenerate</Text>
           </TouchableOpacity>
         )}

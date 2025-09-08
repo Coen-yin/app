@@ -1,6 +1,6 @@
 import React, {createContext, useContext, useState, useEffect} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import Toast from 'react-native-toast-message';
+import {Alert} from 'react-native';
 
 const AuthContext = createContext();
 
@@ -87,21 +87,13 @@ export const AuthProvider = ({children}) => {
       const user = users[email];
 
       if (!user) {
-        Toast.show({
-          type: 'error',
-          text1: 'Login Failed',
-          text2: 'No account found with this email.',
-        });
+        Alert.alert('Login Failed', 'No account found with this email.');
         return false;
       }
 
       const hashedPassword = hashPassword(password);
       if (user.password !== hashedPassword) {
-        Toast.show({
-          type: 'error',
-          text1: 'Login Failed',
-          text2: 'Incorrect password.',
-        });
+        Alert.alert('Login Failed', 'Incorrect password.');
         return false;
       }
 

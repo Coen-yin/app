@@ -6,7 +6,7 @@ import {
   SafeAreaView,
   TouchableOpacity,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/Feather';
+import {Feather} from '@expo/vector-icons';
 
 import {useTheme} from '../context/ThemeContext';
 import {useAuth} from '../context/AuthContext';
@@ -19,7 +19,7 @@ const ProfileScreen = ({navigation}) => {
     return (
       <SafeAreaView style={[styles.container, {backgroundColor: theme.bgSecondary}]}>
         <View style={styles.centered}>
-          <Icon name="crown" size={48} color={theme.textTertiary} />
+          <Feather name="crown" size={48} color={theme.textTertiary} />
           <Text style={[styles.title, {color: theme.textPrimary}]}>
             Pro Feature
           </Text>
@@ -51,7 +51,7 @@ const ProfileScreen = ({navigation}) => {
           
           {currentUser.isPro && (
             <View style={[styles.badge, {backgroundColor: theme.accentPrimary}]}>
-              <Icon name="crown" size={12} color="white" />
+              <Feather name="crown" size={12} color="white" />
               <Text style={styles.badgeText}>Pro</Text>
             </View>
           )}
@@ -60,20 +60,20 @@ const ProfileScreen = ({navigation}) => {
         <View style={styles.options}>
           <TouchableOpacity
             style={[styles.option, {backgroundColor: theme.bgPrimary, borderColor: theme.borderLight}]}>
-            <Icon name="edit-3" size={20} color={theme.textSecondary} />
+            <Feather name="edit-3" size={20} color={theme.textSecondary} />
             <Text style={[styles.optionText, {color: theme.textPrimary}]}>
               Edit Profile
             </Text>
-            <Icon name="chevron-right" size={16} color={theme.textTertiary} />
+            <Feather name="chevron-right" size={16} color={theme.textTertiary} />
           </TouchableOpacity>
 
           <TouchableOpacity
             style={[styles.option, {backgroundColor: theme.bgPrimary, borderColor: theme.borderLight}]}>
-            <Icon name="camera" size={20} color={theme.textSecondary} />
+            <Feather name="camera" size={20} color={theme.textSecondary} />
             <Text style={[styles.optionText, {color: theme.textPrimary}]}>
               Change Photo
             </Text>
-            <Icon name="chevron-right" size={16} color={theme.textTertiary} />
+            <Feather name="chevron-right" size={16} color={theme.textTertiary} />
           </TouchableOpacity>
         </View>
       </View>
