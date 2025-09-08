@@ -110,18 +110,16 @@ export const AuthProvider = ({children}) => {
       await AsyncStorage.setItem('talkie-user', JSON.stringify(userData));
 
       Alert.alert(
-        
-        "Welcome back!",TITLE"Welcome back!",
-        text2: `Good to see you, ${user.name}`,
+        "Welcome back!",
+        `Good to see you, ${user.name}`
       );
 
       return true;
     } catch (error) {
       console.error('Login error:', error);
       Alert.alert(
-        
-        "Login Error",TITLE"Login Error",
-        "An error occurred during login.",MESSAGE"An error occurred during login.",
+        "Login Error",
+        "An error occurred during login."
       );
       return false;
     }
@@ -132,18 +130,16 @@ export const AuthProvider = ({children}) => {
       // Validation
       if (!name || !email || !password) {
         Alert.alert(
-          
-          "Signup Failed",TITLE"Signup Failed",
-          "Please fill in all fields.",MESSAGE"Please fill in all fields.",
+          "Signup Failed",
+          "Please fill in all fields."
         );
         return false;
       }
 
       if (password.length < 6) {
         Alert.alert(
-          
-          "Signup Failed",TITLE"Signup Failed",
-          "Password must be at least 6 characters.",MESSAGE"Password must be at least 6 characters.",
+          "Signup Failed",
+          "Password must be at least 6 characters."
         );
         return false;
       }
@@ -154,9 +150,8 @@ export const AuthProvider = ({children}) => {
 
       if (users[email]) {
         Alert.alert(
-          
-          "Signup Failed",TITLE"Signup Failed",
-          "An account with this email already exists.",MESSAGE"An account with this email already exists.",
+          "Signup Failed",
+          "An account with this email already exists."
         );
         return false;
       }
@@ -190,18 +185,16 @@ export const AuthProvider = ({children}) => {
       await AsyncStorage.setItem('talkie-user', JSON.stringify(userData));
 
       Alert.alert(
-        
-        "Welcome to Talkie Gen AI!",TITLE"Welcome to Talkie Gen AI!",
-        text2: `Account created successfully, ${name}`,
+        "Welcome to Talkie Gen AI!",
+        `Account created successfully, ${name}`
       );
 
       return true;
     } catch (error) {
       console.error('Signup error:', error);
       Alert.alert(
-        
-        "Signup Error",TITLE"Signup Error",
-        "An error occurred during signup.",MESSAGE"An error occurred during signup.",
+        "Signup Error",
+        "An error occurred during signup."
       );
       return false;
     }
@@ -212,9 +205,8 @@ export const AuthProvider = ({children}) => {
       setCurrentUser(null);
       await AsyncStorage.removeItem('talkie-user');
       Alert.alert(
-        
-        "Signed Out",TITLE"Signed Out",
-        "You have been signed out successfully.",MESSAGE"You have been signed out successfully.",
+        "Signed Out",
+        "You have been signed out successfully."
       );
     } catch (error) {
       console.error('Logout error:', error);
@@ -239,18 +231,16 @@ export const AuthProvider = ({children}) => {
       }
 
       Alert.alert(
-        
-        "Profile Updated",TITLE"Profile Updated",
-        "Your profile has been updated successfully.",MESSAGE"Your profile has been updated successfully.",
+        "Profile Updated",
+        "Your profile has been updated successfully."
       );
 
       return true;
     } catch (error) {
       console.error('Profile update error:', error);
       Alert.alert(
-        
-        "Update Failed",TITLE"Update Failed",
-        "Failed to update profile.",MESSAGE"Failed to update profile.",
+        "Update Failed",
+        "Failed to update profile."
       );
       return false;
     }
@@ -268,9 +258,8 @@ export const AuthProvider = ({children}) => {
       await updateProfile(updates);
 
       Alert.alert(
-        
-        "🎉 Welcome to Talkie Gen Pro!",TITLE"🎉 Welcome to Talkie Gen Pro!",
-        "You now have access to exclusive features.",MESSAGE"You now have access to exclusive features.",
+        "🎉 Welcome to Talkie Gen Pro!",
+        "You now have access to exclusive features."
       );
 
       return true;
